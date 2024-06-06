@@ -8,3 +8,28 @@
 body,html{
 
 }
+ 
+
+.main{
+    display: flex;
+    width: 100%;
+}
+
+.navigation{
+ 
+}
+
+
+
+.content{
+
+}
+
+header{
+  
+    width: 100%;
+}
+
+main{
+    background-color: blue;
+}
