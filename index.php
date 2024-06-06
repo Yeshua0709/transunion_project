@@ -7,7 +7,7 @@ if(!isset($_SESSION["login"])){
 	header("location:./view/login.php"); 
 }
 
-    // Retrieve the user object from the session
+
     $user = $_SESSION["user"];
 
 
@@ -22,6 +22,8 @@ if(!isset($_SESSION["login"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="styles/font.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
 
@@ -35,9 +37,21 @@ if(!isset($_SESSION["login"])){
     </div>
 </div>
 
+
+<div class="content">
+
+<div class="container">
 <header>
     <p>  <?php echo $user->username; ?> </p>
 </header>
+
+<main>
+ <p>body here</p>
+</main>
+
+</div>
+</div>
+
 
 </div>
 
