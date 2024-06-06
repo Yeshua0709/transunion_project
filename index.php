@@ -1,5 +1,6 @@
 <?php
 
+include ("classes/User.php");
 
 session_start ();
 if(!isset($_SESSION["login"])){
@@ -9,6 +10,8 @@ if(!isset($_SESSION["login"])){
     // Retrieve the user object from the session
     $user = $_SESSION["user"];
 
+
+    
 ?>
 
 
@@ -22,8 +25,22 @@ if(!isset($_SESSION["login"])){
 </head>
 <body>
 
-<h1> Home Page</h1>
-    
+<div class="main">
+
+<div class="navigation">
+    <div class="ul">
+        <div class="li"><a href="">Dashboard</a></div>
+        <div class="li"><a href="">Units</a></div>
+        <div class="li"><a href="">Employees</a></div>
+    </div>
+</div>
+
+<header>
+    <p>  <?php echo $user->username; ?> </p>
+</header>
+
+</div>
+
 
 
 

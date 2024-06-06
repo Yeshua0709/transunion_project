@@ -13,9 +13,13 @@ class User {
 
     }
 
-    // Getters
+// Getters
 public function getId() {
     return $this->id;
+}
+
+public function getUsername() {
+    return $this->username;
 }
 
 }
