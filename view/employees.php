@@ -88,7 +88,7 @@ visibility:hidden;
 }
 .content{
 width: 100%;
-background:#f5f5f5;
+background:#F5F5F5;
 
 }
 
@@ -107,8 +107,37 @@ header p{
 
 
 main{
+    background:none;
 }
 
+.employee-container{
+  margin:1em;
+    height: 88vh;
+    background:white;
+    padding:1em;
+    box-shadow: 0 2px 3px rgb(0,0,0,0.3);
+}
+
+.emp-table-container{
+    height: 90%;
+    overflow: auto;
+}
+.emp-table{
+  width:100%;
+  text-align:center;
+}
+
+.emp-data td{
+    border-bottom:1px solid #00A6CA;
+    padding:10px;
+  
+}
+
+tr th{
+    background:#00A6CA;
+    color:white;
+    padding:10px;
+}
 </style>
 <div class="main">
 
@@ -177,7 +206,9 @@ main{
                 <p>  <?php echo $user->username; ?> </p>
             </header>
 
-            <main>
+            <main class="employee-container">
+
+            <?php include '../controller/get_employees.php'; ?>
 
             </main>
 
