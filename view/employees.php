@@ -116,6 +116,7 @@ main{
     background:white;
     padding:1em;
     box-shadow: 0 2px 3px rgb(0,0,0,0.3);
+    border-radius: 5px;
 }
 
 .emp-table-container{
@@ -138,8 +139,140 @@ tr th{
     color:white;
     padding:10px;
 }
+
+.search-add{
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+  
+    margin:1em 0;
+}
+
+
+.add .add-emp{
+    padding:10px;
+    border:none;
+    background:none;
+    background:#00A6CA;
+    color:white;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+}
+
+
+.search-input{
+padding:10px;
+border:none;
+background:none;
+border-radius: 4px;
+box-shadow:inset 0 3px 5px rgb(0,0,0,0.2);
+margin-right:1em ;
+}
+
+
+.search-btn{
+    padding:10px 20px;
+border:none;
+background:#FCD800;
+border-radius: 4px;
+box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+color:white;
+}
+
+.overlay{
+    background:rgb(0,0,0,0.4);
+    position:absolute;
+    width:100%;
+    height:100vh;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 4;
+}
+
+.add-emp-modal{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index:5;
+    background:white;
+    padding:2em;
+    border-radius: 3px;
+}
+
+.add-emp-modal-container .form-row input {
+
+    width:100%;
+    padding:10px;
+    margin:1em 0;
+  
+}
+
+
+.add-emp-title{
+    text-align: center;
+    color:#00A6CA;
+}
+
+#emp_modal_btn, #overlay{
+    cursor: pointer;
+}
+
+
+.form-row .fields{
+    padding: 10px;
+    border: none;
+    background: none;
+    border-radius: 4px;
+    box-shadow: inset 0 3px 5px rgb(0, 0, 0, 0.2);
+    margin-right: 1em;
+}
+
+.field-submit-btn{
+    border:none;
+    background: #00A6CA;
+    color:white;
+    box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+}
+
+.add-emp-modal{
+    box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+}
 </style>
 <div class="main">
+
+<div class="overlay" id="overlay"></div>
+            <div class="add-emp-modal" id="emp_modal">
+                <div class="add-emp-modal-container">
+                <p class="add-emp-title">
+                    Add a new employee
+                </p>
+
+                <br>
+                <form method="POST" action="../controller/add-employee.php">
+
+                    <div class="form-row">
+                        <input class="fields" type="text" name="emp_name" placeholder="Enter Employee Name">
+                    </div>
+
+                    <div class="form-row">
+                        <input class="fields" type="text" name="emp_dept" placeholder="Enter Employee Department">
+                    </div>
+
+                    <div class="form-row">
+                        <input class="field-submit-btn" type="submit" name="Add" value="Add Employee">
+                    </div>
+
+                </form>
+                
+                </div>
+               
+            </div>
+
+
 
     <div class="navigation">
         <div class="ul">
@@ -200,6 +333,8 @@ tr th{
 
     <div class="content">
 
+   
+
         <div class="container">
 
             <header>
@@ -208,6 +343,7 @@ tr th{
 
             <main class="employee-container">
 
+           
             <?php include '../controller/get_employees.php'; ?>
 
             </main>
@@ -221,7 +357,29 @@ tr th{
 
 
 
+<script>
 
+    console.log("test");
+
+    var overlay = document.getElementById("overlay");
+    var emp_modal = document.getElementById('emp_modal');
+    overlay.style.display = 'none';
+    emp_modal.style.display = 'none';
+
+    var emp_modal_btn = document.getElementById('emp_modal_btn');
+
+    emp_modal_btn.addEventListener('click', function(){
+        overlay.style.display = 'block';
+        emp_modal.style.display = 'block';
+
+    })
+
+    overlay.addEventListener('click',()=>{
+        overlay.style.display = 'none';
+        emp_modal.style.display = 'none';
+    })
+
+</script>
 
 
 </body>

@@ -25,10 +25,21 @@ $result = $mysqli->query($sql);
 <body>
 
 <!-- Search form -->
+
+<div class="search-add">
+
+<div class="search">
 <form method="GET" action="">
-    <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search by name or department">
-    <input type="submit" value="Search">
+    <input class="search-input" type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search Employee">
+    <input class='search-btn' type="submit" value="Search">
 </form>
+</div>
+
+<div class="add">
+    <button class="add-emp" id="emp_modal_btn">+ Add an employee</button>
+</div>
+</div>
+
 
 <div class="emp-table-container">
 
@@ -39,6 +50,7 @@ $result = $mysqli->query($sql);
         <th>ID</th>
         <th>Name</th>
         <th>Department</th>
+        <th>Action</th>
     </tr>
 
  
@@ -52,6 +64,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row["id"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["department"]) . "</td>";
+        echo "<td> <a href='employee.php?id=$row[id]'>Manage </a> </td> ";
         echo "</tr>";
     }
 } else {
