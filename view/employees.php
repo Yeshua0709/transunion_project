@@ -263,7 +263,7 @@ color:white;
                     </div>
 
                     <div class="form-row">
-                        <input class="field-submit-btn" type="submit" name="Add" value="Add Employee">
+                        <input class="field-submit-btn" type="submit" name="add" value="Add Employee">
                     </div>
 
                 </form>
