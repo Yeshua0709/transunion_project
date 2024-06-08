@@ -11,6 +11,7 @@ if(!isset($_SESSION["login"])){
     $user = $_SESSION["user"];
 
 
+
     
 ?>
 
@@ -21,7 +22,7 @@ if(!isset($_SESSION["login"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employees</title>
+    <title>Units</title>
     <link rel="stylesheet" href="../styles/font.css">
     <link rel="stylesheet" href="../styles/index.css">
 </head>
@@ -88,7 +89,7 @@ visibility:hidden;
 }
 .content{
 width: 100%;
-background:#f5f5f5;
+background:#F5F5F5;
 
 }
 
@@ -107,10 +108,191 @@ header p{
 
 
 main{
+    background:none;
 }
 
+.employee-container{
+  margin:1em;
+    height: 88vh;
+    background:white;
+    padding:1em;
+    box-shadow: 0 2px 3px rgb(0,0,0,0.3);
+    border-radius: 5px;
+}
+
+.emp-table-container{
+    height: 90%;
+    overflow: auto;
+}
+.emp-table{
+  width:100%;
+  text-align:center;
+}
+
+.emp-data td{
+    border-bottom:1px solid #00A6CA;
+    padding:20px;
+  
+}
+
+tr th{
+    background:#00A6CA;
+    color:white;
+    padding:10px;
+}
+
+.search-add{
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+  
+    margin:1em 0;
+}
+
+
+.add .add-emp{
+    padding:10px;
+    border:none;
+    background:none;
+    background:#00A6CA;
+    color:white;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+}
+
+
+.search-input{
+padding:10px;
+border:none;
+background:none;
+border-radius: 4px;
+box-shadow:inset 0 3px 5px rgb(0,0,0,0.2);
+margin-right:1em ;
+}
+
+
+.search-btn{
+    padding:10px 20px;
+border:none;
+background:#FCD800;
+border-radius: 4px;
+box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+color:white;
+}
+
+.overlay{
+    background:rgb(0,0,0,0.4);
+    position:absolute;
+    width:100%;
+    height:100vh;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 4;
+}
+
+.add-emp-modal{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index:5;
+    background:white;
+    padding:2em;
+    border-radius: 3px;
+}
+
+.add-emp-modal-container .form-row input {
+
+    width:100%;
+    padding:10px;
+    margin:1em 0;
+  
+}
+
+
+.add-emp-title{
+    text-align: center;
+    color:#00A6CA;
+}
+
+#emp_modal_btn, #overlay{
+    cursor: pointer;
+}
+
+
+.form-row .fields{
+    padding: 10px;
+    border: none;
+    background: none;
+    border-radius: 4px;
+    box-shadow: inset 0 3px 5px rgb(0, 0, 0, 0.2);
+    margin-right: 1em;
+}
+
+.field-submit-btn{
+    border:none;
+    background: #00A6CA;
+    color:white;
+    box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+}
+
+.add-emp-modal{
+    box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+}
+
+.success-msg{
+    background:#d4edda;
+    color:#155724;
+    margin:1em;
+    padding:1em;
+    border:1px solid #c2e5ca;
+    border-radius: 4px;
+}
+
+.manage-btn{
+    color:white;
+    background:#00A6CA;
+    padding:7px 20px;
+    text-decoration: none;
+    box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+    margin:2em 0;
+    border-radius: 5px;
+}
 </style>
 <div class="main">
+
+<div class="overlay" id="overlay"></div>
+            <div class="add-emp-modal" id="emp_modal">
+                <div class="add-emp-modal-container">
+                <p class="add-emp-title">
+                    Add a new employee
+                </p>
+
+                <br>
+                <form method="POST" action="../controller/add-employee.php">
+
+                    <div class="form-row">
+                        <input class="fields" type="text" name="emp_name" placeholder="Enter Employee Name">
+                    </div>
+
+                    <div class="form-row">
+                        <input class="fields" type="text" name="emp_dept" placeholder="Enter Employee Department">
+                    </div>
+
+                    <div class="form-row">
+                        <input class="field-submit-btn" type="submit" name="add" value="Add Employee">
+                    </div>
+
+                </form>
+                
+                </div>
+               
+            </div>
+
+
 
     <div class="navigation">
         <div class="ul">
@@ -133,7 +315,7 @@ main{
             Dashboard 
 </a> </div>
 
-            <div class="li"><a class="nav-active" href="#">
+            <div class="li"><a  class="nav-active" href="units.php">
 
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"  fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
                <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5"/>
@@ -145,7 +327,7 @@ main{
         </a></div>
 
 
-            <div class="li"><a href="employees.php">
+            <div class="li"><a  href="#">
                 
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"  fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
                  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
@@ -171,13 +353,25 @@ main{
 
     <div class="content">
 
+
+
         <div class="container">
 
             <header>
                 <p>  <?php echo $user->username; ?> </p>
             </header>
 
-            <main>
+            <?php
+    
+    if (isset($_GET['success']) && $_GET['success'] == 1) {
+        echo "<p class='success-msg'>New employee added successfully.</p>";
+    }
+   ?>
+
+            <main class="employee-container">
+
+           
+            <?php include '../controller/get_units.php'; ?>
 
             </main>
 
@@ -190,7 +384,29 @@ main{
 
 
 
+<script>
 
+    console.log("test");
+
+    var overlay = document.getElementById("overlay");
+    var emp_modal = document.getElementById('emp_modal');
+    overlay.style.display = 'none';
+    emp_modal.style.display = 'none';
+
+    var emp_modal_btn = document.getElementById('emp_modal_btn');
+
+    emp_modal_btn.addEventListener('click', function(){
+        overlay.style.display = 'block';
+        emp_modal.style.display = 'block';
+
+    })
+
+    overlay.addEventListener('click',()=>{
+        overlay.style.display = 'none';
+        emp_modal.style.display = 'none';
+    })
+
+</script>
 
 
 </body>

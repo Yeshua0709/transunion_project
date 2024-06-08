@@ -64,7 +64,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row["id"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["department"]) . "</td>";
-        echo "<td> <a href='employee.php?id=$row[id]'>Manage </a> </td> ";
+        echo "<td> <a class='manage-btn'href='employee.php?id=$row[id]'>Manage </a> </td> ";
         echo "</tr>";
     }
 } else {
