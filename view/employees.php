@@ -11,6 +11,7 @@ if(!isset($_SESSION["login"])){
     $user = $_SESSION["user"];
 
 
+
     
 ?>
 
@@ -241,6 +242,15 @@ color:white;
 .add-emp-modal{
     box-shadow: 0 3px 5px rgb(0,0,0,0.3);
 }
+
+.success-msg{
+    background:#d4edda;
+    color:#155724;
+    margin:1em;
+    padding:1em;
+    border:1px solid #c2e5ca;
+    border-radius: 4px;
+}
 </style>
 <div class="main">
 
@@ -333,13 +343,20 @@ color:white;
 
     <div class="content">
 
-   
+
 
         <div class="container">
 
             <header>
                 <p>  <?php echo $user->username; ?> </p>
             </header>
+
+            <?php
+    
+    if (isset($_GET['success']) && $_GET['success'] == 1) {
+        echo "<p class='success-msg'>New employee added successfully.</p>";
+    }
+   ?>
 
             <main class="employee-container">
 
