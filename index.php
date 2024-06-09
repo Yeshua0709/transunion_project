@@ -1,6 +1,7 @@
 <?php
 
 include ("classes/User.php");
+include ('controller/connection.php');
 
 session_start ();
 if(!isset($_SESSION["login"])){
@@ -11,7 +12,33 @@ if(!isset($_SESSION["login"])){
     $user = $_SESSION["user"];
 
 
-    
+    // Deployed Units
+$sql_deployed_units = "SELECT COUNT(*) AS deployed_units FROM units WHERE status = 'Assigned'";
+$result_deployed_units = $mysqli->query($sql_deployed_units);
+$row_deployed_units = $result_deployed_units->fetch_assoc();
+$deployed_units = $row_deployed_units['deployed_units'];
+
+
+// Available Units
+$sql_available_units = "SELECT COUNT(*) AS available_units FROM units WHERE status = 'in-storage'";
+$result_available_units = $mysqli->query($sql_available_units);
+$row_available_units = $result_available_units->fetch_assoc();
+$available_units = $row_available_units['available_units'];
+
+
+
+// Deployed Units Ratio
+$sql_deployed_units_ratio = "
+SELECT 
+    (SELECT COUNT(*) FROM units WHERE status = 'Assigned') / 
+    (SELECT COUNT(*) FROM employees) AS deployed_units_ratio
+";
+$result_deployed_units_ratio = $mysqli->query($sql_deployed_units_ratio);
+$row_deployed_units_ratio = $result_deployed_units_ratio->fetch_assoc();
+$deployed_units_ratio = $row_deployed_units_ratio['deployed_units_ratio'];
+
+$deployed_units_ratio = $deployed_units_ratio * 100;
+
 ?>
 
 
@@ -109,6 +136,59 @@ header p{
 main{
 }
 
+.dashboard{
+width: 100%;
+padding:1em;
+}
+
+.dashboard-container{
+    width: 100%;
+display: flex;
+justify-content: space-between;
+}
+
+.dashboard-row{
+width: 32.5%;
+background:white;
+box-shadow: 0 3px 5px rgb(0,0,0,0.3);
+padding:1em;
+border-radius: 3px;
+}
+
+.row-header{
+font-size: 1.5em;
+margin-bottom: 2em;
+}
+
+.row-value{
+    text-align:right;
+
+}
+
+.project-progress{
+    background:#00A6CA;
+    color:white;
+}
+
+.db-title{
+    font-weight:600;
+    color:#00A6CA;
+}
+
+.db-title-2{
+    font-weight:600;
+}
+
+.db-value-1{
+    font-weight:600;
+    color:#00A6CA;
+    font-size: 3em;
+}
+
+.db-value-2{
+    font-weight: 600;
+    font-size: 3em;
+}
 </style>
 <div class="main">
 
@@ -178,6 +258,47 @@ main{
             </header>
 
             <main>
+
+            <div class="dashboard">
+
+                <div class="dashboard-container">
+
+                <div class="dashboard-row">
+                    <div class="row-header">
+                        <p class="db-title">Deployed Units</p>
+                    </div>
+
+                    <div class="row-value">
+                        <p class="db-value-1" ><?php echo $deployed_units ?></p>
+                    </div>
+                </div>
+
+
+                <div class="dashboard-row">
+                    <div class="row-header">
+                        <p class="db-title"> Available Units</p>
+                    </div>
+
+                    <div class="row-value">
+                        <p class="db-value-1" ><?php echo $available_units ?></p>
+                    </div>
+                </div>
+
+
+                <div class="dashboard-row project-progress">
+                    <div class="row-header ">
+                        <p class="db-title-2">Project Progress</p>
+                    </div>
+
+                    <div class="row-value">
+                        <p class="db-value-2"><?php echo $deployed_units_ratio?> %</p>
+                    </div>
+                </div>
+
+
+
+                </div>
+            </div>
 
             </main>
 
