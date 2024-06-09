@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2024 at 10:56 AM
+-- Generation Time: Jun 09, 2024 at 06:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,6 @@ CREATE TABLE `employees` (
 INSERT INTO `employees` (`id`, `name`, `department`) VALUES
 (1, 'Alice Johnson', 'IT'),
 (2, 'Bob Smith', 'Legal and Compliance'),
-(3, 'Carol Williams', 'Marketing'),
 (4, 'David Jones', 'Management Communication'),
 (5, 'Eve Brown', 'Genpact'),
 (6, 'Frank Clark', 'IT'),
@@ -123,7 +122,11 @@ INSERT INTO `employees` (`id`, `name`, `department`) VALUES
 (83, 'Elena Evans', 'Marketing'),
 (84, 'Felix Fisher', 'Management Communication'),
 (85, 'Gabriella Gonzales', 'Genpact'),
-(86, 'Hunter Gray', 'IT');
+(86, 'Hunter Gray', 'IT'),
+(87, 'Yeshua Miguel Abrenica', 'IT'),
+(88, 'Test', 'test'),
+(89, 'Test 2', 'test 2'),
+(90, 'test 4', 'test 4');
 
 -- --------------------------------------------------------
 
@@ -145,24 +148,22 @@ CREATE TABLE `units` (
 --
 
 INSERT INTO `units` (`id`, `serial`, `model`, `memory`, `status`, `assignee`) VALUES
-(1, 'SN123456001', 'HP', '16GB RAM', 'in-storage', 0),
-(2, 'SN123456002', 'HP', '32GB RAM', 'in-storage', 0),
-(3, 'SN123456003', 'HP', '16GB RAM', 'in-storage', 0),
-(4, 'SN123456004', 'HP', '32GB RAM', 'in-storage', 0),
-(5, 'SN123456005', 'HP', '16GB RAM', 'in-storage', 0),
-(6, 'SN123456006', 'HP', '32GB RAM', 'in-storage', 0),
-(7, 'SN123456007', 'HP', '16GB RAM', 'in-storage', 0),
-(8, 'SN123456008', 'HP', '32GB RAM', 'in-storage', 0),
-(9, 'SN123456009', 'HP', '16GB RAM', 'in-storage', 0),
+(1, 'SN123456001', 'HP', '16GB RAM', 'for repair', 0),
+(2, 'SN123456002', 'HP', '32GB RAM', 'Assigned', 1),
+(4, 'SN123456004', 'HP', '32GB RAM', 'for repair', 0),
+(5, 'SN123456005', 'HP', '16GB RAM', 'Assigned', 14),
+(6, 'SN123456006', 'HP', '32GB RAM', 'Assigned', 8),
+(8, 'SN123456008', 'HP', '32GB RAM', 'Assigned', 5),
+(9, 'SN123456009', 'HP', '16GB RAM', 'Assigned', 7),
 (10, 'SN123456010', 'HP', '32GB RAM', 'in-storage', 0),
-(11, 'SN123456011', 'HP', '16GB RAM', 'in-storage', 0),
+(11, 'SN123456011', 'HP', '16GB RAM', 'Assigned', 14),
 (12, 'SN123456012', 'HP', '32GB RAM', 'in-storage', 0),
 (13, 'SN123456013', 'HP', '16GB RAM', 'in-storage', 0),
 (14, 'SN123456014', 'HP', '32GB RAM', 'in-storage', 0),
 (15, 'SN123456015', 'HP', '16GB RAM', 'in-storage', 0),
 (16, 'SN123456016', 'HP', '32GB RAM', 'in-storage', 0),
 (17, 'SN123456017', 'HP', '16GB RAM', 'in-storage', 0),
-(18, 'SN123456018', 'HP', '32GB RAM', 'in-storage', 0),
+(18, 'SN123456018', 'HP', '32GB RAM', 'Assigned', 4),
 (19, 'SN123456019', 'HP', '16GB RAM', 'in-storage', 0),
 (20, 'SN123456020', 'HP', '32GB RAM', 'in-storage', 0),
 (21, 'SN123456021', 'HP', '16GB RAM', 'in-storage', 0),
@@ -250,13 +251,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `user`
