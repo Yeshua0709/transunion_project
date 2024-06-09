@@ -45,7 +45,7 @@ $result = $mysqli->query($sql);
 <div class="search-add">
     <div class="search">
         <form method="GET" action="">
-            <input class="search-input" type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search Unit">
+            <input class="search-input" type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search Employee">
             <input class='search-btn' type="submit" value="Search">
         </form>
     </div>
@@ -90,7 +90,7 @@ $result = $mysqli->query($sql);
                     echo "<td class='unit-status'><p class='in-storage'> In-Storage </p></td>";
                 }
 
-                echo "<td> <a class='manage-btn' href=''>Manage </a> </td>";
+                echo "<td> <a class='manage-btn' href='../view/unit.php?id=".$row['id']."'>Manage </a> </td>";
                 echo "</tr>";
             }
         } else {
