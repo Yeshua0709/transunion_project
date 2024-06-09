@@ -252,6 +252,15 @@ color:white;
     border-radius: 4px;
 }
 
+.delete-success-msg{
+    background:#fff3cd;
+    color:#856404;
+    margin:1em;
+    padding:1em;
+    border:1px solid #ffeeba;
+    border-radius: 4px;
+}
+
 .manage-btn{
     color:white;
     background:#00A6CA;
@@ -410,6 +419,9 @@ border:1px solid #c3e6cb;
     
     if (isset($_GET['success']) && $_GET['success'] == 1) {
         echo "<p class='success-msg'>New unit added successfully.</p>";
+    }
+    else if (isset($_GET['delete_success']) && $_GET['delete_success'] == 1) {
+        echo "<p class='delete-success-msg'>Unit deleted successfully.</p>";
     }
    ?>
 

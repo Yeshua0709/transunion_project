@@ -397,6 +397,30 @@ box-shadow: 0 3px 5px rgb(0,0,0,0.3);
 border-radius: 3px;
 cursor: pointer;
 }
+.actions-button{
+   font-size: 1.1em;
+   padding:15px 0;
+   margin-bottom: 1em;
+   border:none;
+   border-radius: 4px;
+   box-shadow: 0 3px 5px rgb(0,0,0,0.2);
+   cursor: pointer;
+}
+.assign-btn{
+    background:#00A6CA;
+    color:white;
+}
+
+.return-btn{
+    background:#FCD800;
+    color:white;
+}
+
+
+.repair-btn{
+    background:#FD7070;
+    color:white;
+}
 
 </style>
 <div class="main">
@@ -596,17 +620,17 @@ cursor: pointer;
 
                         <div class="unit-actions">
 
-                            <button>
+                            <button class="actions-button assign-btn">
                                 Assign Unit
                             </button>
 
 
                             <form>
-                                <input type="submit" value="Return Unit" name="return_unit">
+                                <input class="actions-button return-btn" type="submit" value="Return Unit" name="return_unit">
                             </form>
 
                             <form>
-                                <input type="submit" value="For Repair" name="return_unit">
+                                <input class="actions-button repair-btn" type="submit" value="For Repair" name="return_unit">
                             </form>
 
                         </div>
