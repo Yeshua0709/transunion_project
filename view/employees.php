@@ -254,7 +254,7 @@ color:white;
 
 .manage-btn{
     color:white;
-    background:#00A6CA;
+    background:#FD7070;
     padding:7px 20px;
     text-decoration: none;
     box-shadow: 0 3px 5px rgb(0,0,0,0.3);

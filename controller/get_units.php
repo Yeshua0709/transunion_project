@@ -45,7 +45,7 @@ $result = $mysqli->query($sql);
 <div class="search-add">
     <div class="search">
         <form method="GET" action="">
-            <input class="search-input" type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search Employee">
+            <input class="search-input" type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search Unit">
             <input class='search-btn' type="submit" value="Search">
         </form>
     </div>

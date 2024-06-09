@@ -30,6 +30,10 @@ if(!isset($_SESSION["login"])){
     }
 
 
+    // Fetch employees from the database
+$query1 = "SELECT id, name FROM employees";
+$result1 = mysqli_query($mysqli, $query1);
+
    
 
 ?>
@@ -422,6 +426,11 @@ cursor: pointer;
     color:white;
 }
 
+#emp_name{
+    width: 100%;
+    margin-bottom: 1em;
+}
+
 </style>
 <div class="main">
 
@@ -429,25 +438,32 @@ cursor: pointer;
             <div class="add-emp-modal" id="emp_modal">
                 <div class="add-emp-modal-container">
                 <p class="add-emp-title">
-                    Add a new employee
+                  Assign Unit
                 </p>
 
                 <br>
-                <form method="POST" action="../controller/add-employee.php">
+                <form method="POST" action="../controller/assign-unit.php">
+    <div class="form-row">
+        <select class="fields" name="emp_name" id="emp_name" onchange="setEmployeeId()">
+            <option value="">Select Employee</option>
+            <?php
+            while ($row = mysqli_fetch_assoc($result1)) {
+                echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+            }
+            ?>
+        </select>
+    </div>
 
-                    <div class="form-row">
-                        <input class="fields" type="text" name="emp_name" placeholder="Enter Employee Name">
-                    </div>
+    <div class="form-row">
+        <!-- Hidden input field to store employee ID -->
+        <input type="hidden" name="emp_id" id="emp_id">
+        <input type="hidden" name="unit_id" value="<?php echo $_GET['id'] ?>">
+    </div>
 
-                    <div class="form-row">
-                        <input class="fields" type="text" name="emp_dept" placeholder="Enter Employee Department">
-                    </div>
-
-                    <div class="form-row">
-                        <input class="field-submit-btn" type="submit" name="add" value="Add Employee">
-                    </div>
-
-                </form>
+    <div class="form-row">
+        <input class="field-submit-btn" type="submit" name="assign_unit" value="Assign Unit">
+    </div>
+</form>
                 
                 </div>
                
@@ -620,16 +636,18 @@ cursor: pointer;
 
                         <div class="unit-actions">
 
-                            <button class="actions-button assign-btn">
+                            <button class="actions-button assign-btn" id="assign-btn">
                                 Assign Unit
                             </button>
 
 
-                            <form>
+                            <form method = "POST" action ="../controller/return-unit.php">
+                            <input type="hidden" name="unit_id" value="<?php echo $_GET['id'] ?> ">
                                 <input class="actions-button return-btn" type="submit" value="Return Unit" name="return_unit">
                             </form>
 
-                            <form>
+                            <form method = "POST" action ="../controller/repair-unit.php">
+                            <input type="hidden" name="unit_id" value="<?php echo $_GET['id'] ?> ">
                                 <input class="actions-button repair-btn" type="submit" value="For Repair" name="return_unit">
                             </form>
 
@@ -660,7 +678,7 @@ cursor: pointer;
     overlay.style.display = 'none';
     emp_modal.style.display = 'none';
 
-    var emp_modal_btn = document.getElementById('emp_modal_btn');
+    var emp_modal_btn = document.getElementById('assign-btn');
 
     emp_modal_btn.addEventListener('click', function(){
         overlay.style.display = 'block';
