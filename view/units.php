@@ -310,6 +310,8 @@ border:1px solid #c3e6cb;
 .unit-status{
     text-align: center;
 }
+
+
 </style>
 <div class="main">
 

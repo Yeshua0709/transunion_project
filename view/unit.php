@@ -431,6 +431,13 @@ cursor: pointer;
     margin-bottom: 1em;
 }
 
+.refresh-btn{
+   
+    background:#FCD800;
+    color:white;
+    text-decoration: none;
+}
+
 </style>
 <div class="main">
 
@@ -461,9 +468,13 @@ cursor: pointer;
     </div>
 
     <div class="form-row">
-        <input class="field-submit-btn" type="submit" name="assign_unit" value="Assign Unit">
+        <input id="final-assign-btn" class="field-submit-btn" type="submit" name="assign_unit" value="Assign Unit">
     </div>
+
+
 </form>
+
+
                 
                 </div>
                
@@ -690,6 +701,16 @@ cursor: pointer;
         overlay.style.display = 'none';
         emp_modal.style.display = 'none';
     })
+
+
+   
+    document.getElementById("final-assign-btn").addEventListener("click", function() {
+        setTimeout(function() {
+            window.location.reload(); // Refresh the page
+        }, 1500); // 1500 milliseconds = 1.5 seconds
+    });
+
+
 
 </script>
 
