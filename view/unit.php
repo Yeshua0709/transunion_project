@@ -654,7 +654,7 @@ cursor: pointer;
 
                             <form method = "POST" action ="../controller/return-unit.php">
                             <input type="hidden" name="unit_id" value="<?php echo $_GET['id'] ?> ">
-                                <input class="actions-button return-btn" type="submit" value="Return Unit" name="return_unit">
+                                <input class="actions-button return-btn" id ="return-btn" type="submit" value="Return Unit" name="return_unit">
                             </form>
 
                             <form method = "POST" action ="../controller/repair-unit.php">
@@ -705,6 +705,12 @@ cursor: pointer;
 
    
     document.getElementById("final-assign-btn").addEventListener("click", function() {
+        setTimeout(function() {
+            window.location.reload(); // Refresh the page
+        }, 1500); // 1500 milliseconds = 1.5 seconds
+    });
+
+    document.getElementById("return-btn").addEventListener("click", function() {
         setTimeout(function() {
             window.location.reload(); // Refresh the page
         }, 1500); // 1500 milliseconds = 1.5 seconds
