@@ -27,10 +27,9 @@ $available_units = $row_available_units['available_units'];
 
 
 
-// Deployed Units Ratio
 $sql_deployed_units_ratio = "
 SELECT 
-    (SELECT COUNT(*) FROM units WHERE status = 'Assigned') / 
+    (SELECT COUNT(DISTINCT assignee) FROM units WHERE assignee != 0) / 
     (SELECT COUNT(*) FROM employees) AS deployed_units_ratio
 ";
 $result_deployed_units_ratio = $mysqli->query($sql_deployed_units_ratio);
